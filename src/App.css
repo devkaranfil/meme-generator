@@ -50,3 +50,8 @@ main {
   border-radius: 5px;
   background: linear-gradient(90deg, #672280 1.18%, #a626d3 100%);
 }
+
+.meme-image {
+  max-width: 100%;
+  align-self: center;
+}
