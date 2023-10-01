@@ -10,6 +10,17 @@ export function Meme() {
 
   const [allMemeImages, setAllMemeImages] = useState(memesData);
 
+  function handleChange(event){
+    const {name, value} = event.target
+    setMeme(prevForm => ({
+      ...prevForm,
+      [name]: value
+    }))
+  }
+
+  console.log(meme)
+
+
   function getImages() {
     const memesArray = allMemeImages.data.memes;
     const randomNumber = Math.floor(Math.random() * memesArray.length);
@@ -27,21 +38,27 @@ export function Meme() {
           type="text"
           className="input"
           placeholder="Top Text"
-          name=""
-          id=""
+          name="topText"
+          value={meme.topText}
+          onChange={handleChange}
         />
         <input
           type="text"
           className="input"
           placeholder="Bottom Text"
-          name=""
-          id=""
+          name="bottomText"
+          value={meme.bottomText}
+          onChange={handleChange}
         />
         <button className="button" onClick={getImages}>
           Get a new meme image 🖼
         </button>
       </div>
-      <img src={meme.randomImage} className="meme-image" alt="" />
+      <div className="meme">
+                <img src={meme.randomImage} className="meme-image" />
+                <h2 className="meme-text top">{meme.topText}</h2>
+                <h2 className="meme-text bottom">{meme.bottomText}</h2>
+            </div>
     </main>
   );
 }
